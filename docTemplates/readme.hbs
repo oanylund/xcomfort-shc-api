@@ -1,0 +1,50 @@
+{{#module name="Xcomfort"}}
+{{>header~}}
+{{/module}}
+
+This module lets you send commands from node.js to the Xcomfort smart home controller(SHC)
+made by Eaton. It has no affiliation with Eaton, and is used at your own risk.
+
+If you have xcomfort and a smart home controller at home, this module
+can be used to create custom software for your system.
+For example you can create a webpage customized for your home that controls
+your lighting instead of that generic app that ships with the SHC
+
+The project is in a very early development stage, and the api can end up being changed dramatically.
+
+### Install
+```bash
+npm install oanylund/xcomfort-shc-api
+```
+
+### Usage
+For more details on usage see [https://oanylund.github.io/xcomfort-shc-api](https://oanylund.github.io/xcomfort-shc-api)
+ and the [API referance](#api) below.
+```js
+const Xcomfort = require('xcomfort-shc-api');
+
+const xapi = new Xcomfort({
+  baseUrl: 'http://192.168.0.10', // The url to reach the SHC on your network
+  username: 'user', // The username to login to the system
+  password: '1234' // The password for that user
+  autoSetup: true // Defaults to true.
+});
+
+xapi.on('ready', () => {
+  xapi.setDimState('kitchen light', 20)
+    .then((status) => {
+      if(status) {
+        console.log('Kitchen light set to 20%');
+      }
+    });
+});
+```
+
+
+## <a name="api">API referance<a/>
+{{#class name="Xcomfort"}}
+{{>member-index-grouped baseLevel=0 ~}}
+{{/class}}
+{{#module name="Xcomfort"}}
+{{>members~}}
+{{/module}}

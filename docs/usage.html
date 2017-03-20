@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Xcomfort SHC api</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="xcomfort-shc-api">Xcomfort SHC api</h1>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>This module lets you send commands from node.js to the Xcomfort smart home controller(SHC)
+made by Eaton. It has no affiliation with Eaton, and is used at your own risk.</p>
+<p>If you have xcomfort and a smart home controller at home, this module
+can be used to create custom software for your system.
+For example you can create a webpage customized for your home that controls
+your lighting instead of that generic app that ships with the SHC</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h1 id="usage">Usage</h1>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Import the module</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> Xcomfort = <span class="hljs-built_in">require</span>(<span class="hljs-string">'xcomfort-shc-api'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>First we need to create the config for the SHC</p>
+<p>By default, the autoSetup parameter is set to true.
+When autoSetup is set to true,
+immediately when you create the instance, the module will do a login and then automatically
+fetch all your available devices and scenes and create internal lists with all information
+needed to send commands.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> config = {
+  <span class="hljs-attr">baseUrl</span>: <span class="hljs-string">'http://192.168.0.10'</span>, <span class="hljs-comment">// The url to reach the SHC on your network</span>
+  username: <span class="hljs-string">'user'</span>,               <span class="hljs-comment">// The username to login to the system</span>
+  password: <span class="hljs-string">'1234'</span>                <span class="hljs-comment">// The password for that user</span>
+  autoSetup: <span class="hljs-literal">true</span>                 <span class="hljs-comment">// Defaults to true.</span>
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>We then create a new instance for this SHC.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> xapi = <span class="hljs-keyword">new</span> Xcomfort(config);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>The module extends nodes eventemitter, so we must listen for the ‘error’ event.
+If we don’t listen for this event, the app will crash whenever an error occures.
+Handle errors as you want.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>xapi.on(<span class="hljs-string">'error'</span> (error) =&gt; {
+  <span class="hljs-built_in">console</span>.log(error);
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>When autosetup is used, the module emits a ‘ready’ event we must wait for before
+we can start sending commands.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>xapi.on(<span class="hljs-string">'ready'</span>, () =&gt; {
+  changeLighting();
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <h2 id="changing-actuator-states">Changing actuator states</h2>
+<p>Lets send some commands to change light states.
+Say we have a light named “kitchen light” on the SHC.
+The module uses the same names as configured on the SHC.
+When you want confirmation, or something to happen after you have two choices.
+Either use a callback, or treat it as a promise.
+Both the callback and the resolved promise will return true if
+the change is confirmed from SHC, or it will be falsy if not.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> changeLighting = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Apply a third argument with a callback function</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  xapi.setDimState(<span class="hljs-string">'kitchen light'</span>, <span class="hljs-number">30</span>, (status) =&gt; {
+    <span class="hljs-keyword">if</span> (status) {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Kitchen light dimmed to 30%'</span>);
+    }
+  })</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>If no callback the setDimState will return a promise.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  xapi.setDimState(<span class="hljs-string">'dining light'</span>, <span class="hljs-string">'off'</span>)
+    .then(<span class="hljs-function">(<span class="hljs-params">status</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (status) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Dining light turned off'</span>);
+        <span class="hljs-keyword">return</span> xapi.setDimState(<span class="hljs-string">'bathroom light'</span>, <span class="hljs-string">'on'</span>);
+      }
+    })
+    .then(<span class="hljs-function">(<span class="hljs-params">status</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (status) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Bathroom light turned on'</span>);
+      }
+    })
+    .catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+      <span class="hljs-built_in">console</span>.log(error);
+    });
+
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

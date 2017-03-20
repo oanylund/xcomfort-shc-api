@@ -1,0 +1,49 @@
+{
+  "name": "xcomfort-shc-api",
+  "version": "0.0.0-semantic-release",
+  "description": "node.js api for Xcomfort smart home controller",
+  "main": "dist/Xcomfort.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "docs": "npm run docs:readme && npm run docs:usage",
+    "docs:readme": "jsdoc2md --template docTemplates/readme.hbs --partial docTemplates/sig-name.hbs --partial docTemplates/sig-link.hbs --separators  lib/*.js > README.md",
+    "docs:usage": "docco --layout parallel example/usage.js",
+    "prebuild": "rimraf dist",
+    "build": "babel --out-dir dist --ignore *.test.js lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oanylund/xcomfort-shc-api"
+  },
+  "keywords": [
+    "xcomfort",
+    "shc"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "author": "Ole-Andreas Nylund",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {
+    "babel-cli": "6.24.0",
+    "babel-preset-es2015": "6.24.0",
+    "babel-preset-stage-2": "6.22.0",
+    "docco": "0.7.0",
+    "jest": "19.0.2",
+    "jsdoc-to-markdown": "3.0.0",
+    "nock": "9.0.9",
+    "rimraf": "2.6.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ]
+  }
+}
