@@ -14,7 +14,7 @@ The project is in a very early development stage, and the api can end up being c
 
 ### Install
 ```bash
-npm install oanylund/xcomfort-shc-api
+npm install xcomfort-shc-api
 ```
 
 ### Usage
