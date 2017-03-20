@@ -2,6 +2,9 @@
 
 ## Xcomfort
 
+[![Travis](https://img.shields.io/travis/oanylund/xcomfort-shc-api.svg?style=flat-square)](https://travis-ci.org/oanylund/xcomfort-shc-api)
+[![Codecov](https://img.shields.io/codecov/c/github/oanylund/xcomfort-shc-api.svg?style=flat-square)](https://codecov.io/github/oanylund/xcomfort-shc-api)
+
 This module lets you send commands from node.js to the Xcomfort smart home controller(SHC)
 made by Eaton. It has no affiliation with Eaton, and is used at your own risk.
 
