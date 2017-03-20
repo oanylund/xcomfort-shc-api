@@ -50,6 +50,7 @@ xapi.on('ready', () => {
         * [.setDimState(deviceName, state, cb)](#module_Xcomfort--Xcomfort+setDimState) ⇒ <code>Promise</code> &#124; <code>null</code>
         * [.getDeviceNames()](#module_Xcomfort--Xcomfort+getDeviceNames) ⇒ <code>Array.&lt;string&gt;</code>
         * [.getSceneNames()](#module_Xcomfort--Xcomfort+getSceneNames) ⇒ <code>Array.&lt;string&gt;</code>
+        * [.getNameObject()](#module_Xcomfort--Xcomfort+getNameObject) ⇒ <code>Object</code>
         * [Event: "ready"](#module_Xcomfort--Xcomfort+event_ready)
         * [Event: "error"](#module_Xcomfort--Xcomfort+event_error)
     * _inner_
@@ -152,6 +153,15 @@ Generates list of all device names
 
 #### xcomfort.getSceneNames() ⇒ <code>Array.&lt;string&gt;</code>
 Generates list of all scene names
+
+**Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
+
+-
+
+<a name="module_Xcomfort--Xcomfort+getNameObject"></a>
+
+#### xcomfort.getNameObject() ⇒ <code>Object</code>
+Generates object with list of devices and scenes
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
