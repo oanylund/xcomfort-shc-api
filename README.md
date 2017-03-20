@@ -19,7 +19,7 @@ npm install xcomfort-shc-api
 
 ### Usage
 For more details on usage see [https://oanylund.github.io/xcomfort-shc-api](https://oanylund.github.io/xcomfort-shc-api)
- and the [API referance](#api) below.
+ and the [API reference](#api) below.
 ```js
 const Xcomfort = require('xcomfort-shc-api');
 
@@ -41,7 +41,7 @@ xapi.on('ready', () => {
 ```
 
 
-## <a name="api">API referance<a/>
+## <a name="api">API reference<a/>
 * [Xcomfort](#exp_module_Xcomfort--Xcomfort) ⇐ <code>[EventEmitter](http://nodejs.org/api/events.html)</code> ⏏
     * [new Xcomfort(params)](#new_module_Xcomfort--Xcomfort_new)
     * _instance_
