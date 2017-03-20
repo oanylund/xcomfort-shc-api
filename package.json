@@ -5,7 +5,8 @@
   "main": "dist/Xcomfort.js",
   "scripts": {
     "commit": "git-cz",
-    "test": "jest",
+    "precommit": "npm test",
+    "test": "jest --coverage",
     "test:watch": "jest --watch",
     "docs": "npm run docs:readme && npm run docs:usage",
     "docs:readme": "jsdoc2md --template docTemplates/readme.hbs --partial docTemplates/sig-name.hbs --partial docTemplates/sig-link.hbs --separators  lib/*.js > README.md",
@@ -40,6 +41,7 @@
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.0.0",
     "docco": "0.7.0",
+    "husky": "0.13.2",
     "jest": "19.0.2",
     "jsdoc-to-markdown": "3.0.0",
     "nock": "9.0.9",
@@ -50,6 +52,16 @@
   "config": {
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 20,
+        "functions": 20,
+        "lines": 20,
+        "statements": 20
+      }
     }
   },
   "babel": {
