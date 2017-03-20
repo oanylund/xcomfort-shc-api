@@ -1,16 +1,18 @@
 {
   "name": "xcomfort-shc-api",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.0-development",
   "description": "node.js api for Xcomfort smart home controller",
   "main": "dist/Xcomfort.js",
   "scripts": {
+    "commit": "git-cz",
     "test": "jest",
     "test:watch": "jest --watch",
     "docs": "npm run docs:readme && npm run docs:usage",
     "docs:readme": "jsdoc2md --template docTemplates/readme.hbs --partial docTemplates/sig-name.hbs --partial docTemplates/sig-link.hbs --separators  lib/*.js > README.md",
     "docs:usage": "docco --layout parallel example/usage.js",
     "prebuild": "rimraf dist",
-    "build": "babel --out-dir dist --ignore *.test.js lib"
+    "build": "babel --out-dir dist --ignore *.test.js lib",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
@@ -32,13 +34,21 @@
   },
   "devDependencies": {
     "babel-cli": "6.24.0",
+    "babel-jest": "19.0.0",
     "babel-preset-es2015": "6.24.0",
     "babel-preset-stage-2": "6.22.0",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.0.0",
     "docco": "0.7.0",
     "jest": "19.0.2",
     "jsdoc-to-markdown": "3.0.0",
     "nock": "9.0.9",
-    "rimraf": "2.6.1"
+    "regenerator-runtime": "0.10.3",
+    "rimraf": "2.6.1",
+    "semantic-release": "^6.3.2"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
   },
   "babel": {
     "presets": [
