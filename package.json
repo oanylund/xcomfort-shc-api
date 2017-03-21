@@ -10,7 +10,7 @@
     "test:watch": "jest --watch",
     "report-coverage": "codecov",
     "docs": "npm run docs:readme && npm run docs:usage",
-    "docs:readme": "jsdoc2md --template docTemplates/readme.hbs --partial docTemplates/sig-name.hbs --partial docTemplates/sig-link.hbs --separators  lib/*.js > README.md",
+    "docs:readme": "jsdoc2md --template docTemplates/readme.hbs --partial docTemplates/sig-name.hbs --partial docTemplates/sig-link.hbs --no-gfm --separators  lib/*.js > README.md",
     "docs:usage": "docco --layout parallel example/index.js",
     "prebuild": "rimraf dist",
     "build": "babel --out-dir dist --ignore *.test.js lib",

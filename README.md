@@ -72,32 +72,68 @@ xapi.on('ready', () => {
 **Emits**: <code>[error](#module_Xcomfort--Xcomfort+event_error)</code>, <code>[ready](#module_Xcomfort--Xcomfort+event_ready)</code>  
 **Properties**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| baseUrl | <code>string</code> | baseUrl from params |
-| username | <code>string</code> | username from params |
-| password | <code>string</code> | password from params |
-| sessionId | <code>string</code> | The session cookie from a valid login |
-| deviceMap | <code>Map.&lt;string, module:Xcomfort~deviceDetail&gt;</code> | Map with all device details |
-| sceneMap | <code>Map.&lt;string, module:Xcomfort~sceneDetail&gt;</code> | Map with all scene details |
+<table>
+  <thead>
+    <tr>
+      <th>Name</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>baseUrl</td><td><code>string</code></td><td><p>baseUrl from params</p>
+</td>
+    </tr><tr>
+    <td>username</td><td><code>string</code></td><td><p>username from params</p>
+</td>
+    </tr><tr>
+    <td>password</td><td><code>string</code></td><td><p>password from params</p>
+</td>
+    </tr><tr>
+    <td>sessionId</td><td><code>string</code></td><td><p>The session cookie from a valid login</p>
+</td>
+    </tr><tr>
+    <td>deviceMap</td><td><code>Map.&lt;string, module:Xcomfort~deviceDetail&gt;</code></td><td><p>Map with all device details</p>
+</td>
+    </tr><tr>
+    <td>sceneMap</td><td><code>Map.&lt;string, module:Xcomfort~sceneDetail&gt;</code></td><td><p>Map with all scene details</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 
--
+* * *
 
 <a name="new_module_Xcomfort--Xcomfort_new"></a>
 
 #### new Xcomfort(params)
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Default</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>params</td><td><code>object</code></td><td></td><td><p>config for the SHC</p>
+</td>
+    </tr><tr>
+    <td>params.baseUrl</td><td><code>string</code></td><td></td><td><p>the url to your SHC</p>
+</td>
+    </tr><tr>
+    <td>params.username</td><td><code>string</code></td><td></td><td><p>username to login to SHC</p>
+</td>
+    </tr><tr>
+    <td>params.password</td><td><code>string</code></td><td></td><td><p>password to login to SHC</p>
+</td>
+    </tr><tr>
+    <td>[params.autoSetup]</td><td><code>boolean</code></td><td><code>true</code></td><td><p>If true, class will login and setup
+device and scene map automatically</p>
+</td>
+    </tr>  </tbody>
+</table>
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| params | <code>object</code> |  | config for the SHC |
-| params.baseUrl | <code>string</code> |  | the url to your SHC |
-| params.username | <code>string</code> |  | username to login to SHC |
-| params.password | <code>string</code> |  | password to login to SHC |
-| [params.autoSetup] | <code>boolean</code> | <code>true</code> | If true, class will login and setup device and scene map automatically |
 
-
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort+login"></a>
 
@@ -106,7 +142,7 @@ Sends login request to SHC and stores cookie in [module:Xcomfort#sessionId](modu
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort+query"></a>
 
@@ -116,15 +152,27 @@ Request method to run on SHC RPC interface
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 **Returns**: <code>Promise</code> &#124; <code>null</code> - If no callback is passed in it returns a promise that resolves with result  
 **See**: http://dz.prosyst.com/pdoc/mBS_SDK_8.0/modules/hdm/api-json/json_rpc_all.html  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Default</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>method</td><td><code>string</code></td><td></td><td><p>Method to run</p>
+</td>
+    </tr><tr>
+    <td>[params]</td><td><code>Array</code></td><td><code>[&#x27;&#x27;,&#x27;&#x27;]</code></td><td><p>Array with arguments for method</p>
+</td>
+    </tr><tr>
+    <td>[cb]</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td></td><td><p>Callback that gets result or error</p>
+</td>
+    </tr>  </tbody>
+</table>
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| method | <code>string</code> |  | Method to run |
-| [params] | <code>Array</code> | <code>[&#x27;&#x27;,&#x27;&#x27;]</code> | Array with arguments for method |
-| [cb] | <code>[callback](#module_Xcomfort--Xcomfort..callback)</code> |  | Callback that gets result or error |
 
-
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort+setDimState"></a>
 
@@ -133,15 +181,27 @@ Sets dimactuator to new state
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 **Returns**: <code>Promise</code> &#124; <code>null</code> - If no callback is passed in it returns a promise that resolves withtrue or null  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>deviceName</td><td><code>string</code></td><td><p>Name of device(same as configured on SHC). Not case sensitive</p>
+</td>
+    </tr><tr>
+    <td>state</td><td><code>number</code> | <code>string</code></td><td><p>New state of device. Valid values are 0-100(integer) or &#39;on&#39;/&#39;off&#39;</p>
+</td>
+    </tr><tr>
+    <td>cb</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback with true or false. True if SHC confirmed action</p>
+</td>
+    </tr>  </tbody>
+</table>
 
-| Param | Type | Description |
-| --- | --- | --- |
-| deviceName | <code>string</code> | Name of device(same as configured on SHC). Not case sensitive |
-| state | <code>number</code> &#124; <code>string</code> | New state of device. valid values is 0-100 integer or 'on'/'off' |
-| cb | <code>[callback](#module_Xcomfort--Xcomfort..callback)</code> | Callback that with true or null. true if SHC confirmed action |
 
-
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort+getDeviceNames"></a>
 
@@ -150,7 +210,7 @@ Generates list of all device names
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort+getSceneNames"></a>
 
@@ -159,7 +219,7 @@ Generates list of all scene names
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort+getNameObject"></a>
 
@@ -168,7 +228,7 @@ Generates object with list of devices and scenes
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort+event_ready"></a>
 
@@ -177,7 +237,7 @@ Ready event gets when autosetup is complete
 
 **Kind**: event emitted by <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort+event_error"></a>
 
@@ -186,7 +246,7 @@ General error event whenever an error occurs
 
 **Kind**: event emitted by <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort..initialSetup"></a>
 
@@ -196,7 +256,7 @@ Runs on initialisation. Logs in, then fetches devices and scenes from SHC
 **Kind**: inner method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 **Emits**: <code>[ready](#module_Xcomfort--Xcomfort+event_ready)</code>  
 
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort..getZoneDevices"></a>
 
@@ -205,13 +265,21 @@ Gets devices in zone from SHC and adds them to deviceMap with nameof device as 
 
 **Kind**: inner method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 **Returns**: <code>Promise</code> - - with no value, only used to tell when its done  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>zoneId</td><td><code>string</code></td><td><p>name of zone to get devices in</p>
+</td>
+    </tr>  </tbody>
+</table>
 
-| Param | Type | Description |
-| --- | --- | --- |
-| zoneId | <code>string</code> | name of zone to get devices in |
 
-
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort..getZoneScenes"></a>
 
@@ -220,13 +288,21 @@ Gets scenes in zone from SHC and adds them to sceneMap with nameof scene as key
 
 **Kind**: inner method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 **Returns**: <code>Promise</code> - - with no value, only used to tell when its done  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>zoneId</td><td><code>string</code></td><td><p>name of zone to get devices in</p>
+</td>
+    </tr>  </tbody>
+</table>
 
-| Param | Type | Description |
-| --- | --- | --- |
-| zoneId | <code>string</code> | name of zone to get devices in |
 
-
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort..getQueryParams"></a>
 
@@ -235,14 +311,24 @@ Configure request parameters
 
 **Kind**: inner method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 **Returns**: <code>Object</code> - Object to pass to request as options  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>method</td><td><code>String</code></td><td><p>Remote method to query on SHC</p>
+</td>
+    </tr><tr>
+    <td>params</td><td><code>Array</code></td><td><p>Array of arguments to pass to method</p>
+</td>
+    </tr>  </tbody>
+</table>
 
-| Param | Type | Description |
-| --- | --- | --- |
-| method | <code>String</code> | Remote method to query on SHC |
-| params | <code>Array</code> | Array of arguments to pass to method |
 
-
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort..deviceDetail"></a>
 
@@ -250,15 +336,30 @@ Configure request parameters
 **Kind**: inner typedef of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 **Properties**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| zoneId | <code>string</code> | Zone id |
-| id | <code>string</code> | Device id |
-| type | <code>string</code> | SHC class type |
-| value | <code>string</code> | Device value |
+<table>
+  <thead>
+    <tr>
+      <th>Name</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>zoneId</td><td><code>string</code></td><td><p>Zone id</p>
+</td>
+    </tr><tr>
+    <td>id</td><td><code>string</code></td><td><p>Device id</p>
+</td>
+    </tr><tr>
+    <td>type</td><td><code>string</code></td><td><p>SHC class type</p>
+</td>
+    </tr><tr>
+    <td>value</td><td><code>string</code></td><td><p>Device value</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort..sceneDetail"></a>
 
@@ -266,13 +367,24 @@ Configure request parameters
 **Kind**: inner typedef of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 **Properties**
 
-| Name | Type | Description |
-| --- | --- | --- |
-| zoneId | <code>string</code> | Zone id |
-| id | <code>string</code> | Scene id |
+<table>
+  <thead>
+    <tr>
+      <th>Name</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>zoneId</td><td><code>string</code></td><td><p>Zone id</p>
+</td>
+    </tr><tr>
+    <td>id</td><td><code>string</code></td><td><p>Scene id</p>
+</td>
+    </tr>  </tbody>
+</table>
 
 
--
+* * *
 
 <a name="module_Xcomfort--Xcomfort..callback"></a>
 
@@ -280,12 +392,22 @@ Configure request parameters
 Callback with result or error
 
 **Kind**: inner typedef of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>error</td><td><code>Error</code></td><td><p>null if no error</p>
+</td>
+    </tr><tr>
+    <td>result</td><td></td><td><p>null if error</p>
+</td>
+    </tr>  </tbody>
+</table>
 
-| Param | Type | Description |
-| --- | --- | --- |
-| error | <code>Error</code> | null if no error |
-| result |  | null if error |
 
-
--
+* * *
 
