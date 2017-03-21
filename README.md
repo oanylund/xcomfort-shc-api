@@ -283,8 +283,8 @@ Callback with result or error
 
 | Param | Type | Description |
 | --- | --- | --- |
-| result |  | Result. null if error |
 | error | <code>Error</code> | null if no error |
+| result |  | null if error |
 
 
 -
