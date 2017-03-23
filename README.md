@@ -180,7 +180,7 @@ Request method to run on SHC RPC interface
 Sets dimactuator to new state
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
-**Returns**: <code>Promise</code> &#124; <code>null</code> - If no callback is passed in it returns a promise that resolves withtrue or null  
+**Returns**: <code>Promise</code> &#124; <code>null</code> - If no callback is passed in it returns a promise that resolves withtrue or false  
 <table>
   <thead>
     <tr>
@@ -195,7 +195,7 @@ Sets dimactuator to new state
     <td>state</td><td><code>number</code> | <code>string</code></td><td><p>New state of device. Valid values are 0-100(integer) or &#39;on&#39;/&#39;off&#39;</p>
 </td>
     </tr><tr>
-    <td>cb</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback with true or false. True if SHC confirmed action</p>
+    <td>cb</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback with true or false result. True if SHC confirmed action</p>
 </td>
     </tr>  </tbody>
 </table>
@@ -242,7 +242,7 @@ Ready event gets when autosetup is complete
 <a name="module_Xcomfort--Xcomfort+event_error"></a>
 
 #### Event: "error"
-General error event whenever an error occurs
+General error event when internal errors occur
 
 **Kind**: event emitted by <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
