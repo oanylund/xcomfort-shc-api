@@ -146,6 +146,7 @@ we can start sending commands.</p>
             
             <div class="content"><div class='highlight'><pre>xapi.on(<span class="hljs-string">'ready'</span>, () =&gt; {
   changeLighting();
+  triggerSomeScene();
 });</pre></div></div>
             
         </li>
@@ -164,7 +165,7 @@ The module uses the same names as configured on the SHC.
 When you want confirmation, or something to happen after you have two choices.
 Either use a callback, or treat it as a promise.
 Both the callback and the resolved promise will return true if
-the change is confirmed from SHC, or it will be falsy if not.</p>
+the change is confirmed from SHC, or it will be false if not.</p>
 
             </div>
             
@@ -230,6 +231,44 @@ the change is confirmed from SHC, or it will be falsy if not.</p>
       <span class="hljs-built_in">console</span>.log(error);
     });
 
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <h2 id="triggering-scenes">Triggering scenes</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Trigger a scene called “All lights off” on the SHC</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">const</span> triggerSomeScene = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  xapi.triggerScene(<span class="hljs-string">'All lights off'</span>)
+    .then(<span class="hljs-function">(<span class="hljs-params">status</span>) =&gt;</span> {
+      <span class="hljs-keyword">if</span> (status) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Scene triggered'</span>);
+      }
+    })
+    .catch(<span class="hljs-function">(<span class="hljs-params">error</span>) =&gt;</span> {
+      <span class="hljs-built_in">console</span>.log(error);
+    })
 }</pre></div></div>
             
         </li>

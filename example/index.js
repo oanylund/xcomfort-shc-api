@@ -44,6 +44,7 @@ xapi.on('error' (error) => {
 // we can start sending commands.
 xapi.on('ready', () => {
   changeLighting();
+  triggerSomeScene();
 });
 
 // Changing actuator states
@@ -54,7 +55,7 @@ xapi.on('ready', () => {
 // When you want confirmation, or something to happen after you have two choices.
 // Either use a callback, or treat it as a promise.
 // Both the callback and the resolved promise will return true if
-// the change is confirmed from SHC, or it will be falsy if not.
+// the change is confirmed from SHC, or it will be false if not.
 
 //
 const changeLighting = () => {
@@ -83,4 +84,20 @@ const changeLighting = () => {
       console.log(error);
     });
 
+}
+
+// Triggering scenes
+// -----------------
+
+// Trigger a scene called "All lights off" on the SHC
+const triggerSomeScene = () => {
+  xapi.triggerScene('All lights off')
+    .then((status) => {
+      if (status) {
+        console.log('Scene triggered');
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    })
 }

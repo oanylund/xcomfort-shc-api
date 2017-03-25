@@ -49,9 +49,9 @@ xapi.on('ready', () => {
     * [new Xcomfort(params)](#new_module_Xcomfort--Xcomfort_new)
     * _instance_
         * [.login()](#module_Xcomfort--Xcomfort+login)
-        * [.query(method, [params], [cb])](#module_Xcomfort--Xcomfort+query) ⇒ <code>Promise</code> &#124; <code>null</code>
-        * [.setDimState(deviceName, state, cb)](#module_Xcomfort--Xcomfort+setDimState) ⇒ <code>Promise</code> &#124; <code>null</code>
-        * [.triggerScene(sceneName, cb)](#module_Xcomfort--Xcomfort+triggerScene) ⇒ <code>Promise</code>
+        * [.query(method, [params], [cb])](#module_Xcomfort--Xcomfort+query) ⇒ <code>Promise</code>
+        * [.setDimState(deviceName, state, [cb])](#module_Xcomfort--Xcomfort+setDimState) ⇒ <code>Promise</code>
+        * [.triggerScene(sceneName, [cb])](#module_Xcomfort--Xcomfort+triggerScene) ⇒ <code>Promise</code>
         * [.getDeviceNames()](#module_Xcomfort--Xcomfort+getDeviceNames) ⇒ <code>Array.&lt;string&gt;</code>
         * [.getSceneNames()](#module_Xcomfort--Xcomfort+getSceneNames) ⇒ <code>Array.&lt;string&gt;</code>
         * [.getNameObject()](#module_Xcomfort--Xcomfort+getNameObject) ⇒ <code>Object</code>
@@ -139,7 +139,7 @@ device and scene map automatically</p>
 <a name="module_Xcomfort--Xcomfort+login"></a>
 
 #### xcomfort.login()
-Sends login request to SHC and stores cookie in [module:Xcomfort#sessionId](module:Xcomfort#sessionId)
+Sends login request to SHC and stores cookie in sessionId
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
@@ -147,11 +147,11 @@ Sends login request to SHC and stores cookie in [module:Xcomfort#sessionId](modu
 
 <a name="module_Xcomfort--Xcomfort+query"></a>
 
-#### xcomfort.query(method, [params], [cb]) ⇒ <code>Promise</code> &#124; <code>null</code>
+#### xcomfort.query(method, [params], [cb]) ⇒ <code>Promise</code>
 Request method to run on SHC RPC interface
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
-**Returns**: <code>Promise</code> &#124; <code>null</code> - If no callback is passed in it returns a promise that resolves with result  
+**Returns**: <code>Promise</code> - Resolves with result  
 **See**: http://dz.prosyst.com/pdoc/mBS_SDK_8.0/modules/hdm/api-json/json_rpc_all.html  
 <table>
   <thead>
@@ -167,7 +167,7 @@ Request method to run on SHC RPC interface
     <td>[params]</td><td><code>Array</code></td><td><code>[&#x27;&#x27;,&#x27;&#x27;]</code></td><td><p>Array with arguments for method</p>
 </td>
     </tr><tr>
-    <td>[cb]</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td></td><td><p>Callback that gets result or error</p>
+    <td>[cb]</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td></td><td><p>Callback (err,result)</p>
 </td>
     </tr>  </tbody>
 </table>
@@ -177,11 +177,11 @@ Request method to run on SHC RPC interface
 
 <a name="module_Xcomfort--Xcomfort+setDimState"></a>
 
-#### xcomfort.setDimState(deviceName, state, cb) ⇒ <code>Promise</code> &#124; <code>null</code>
+#### xcomfort.setDimState(deviceName, state, [cb]) ⇒ <code>Promise</code>
 Sets dimactuator to new state
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
-**Returns**: <code>Promise</code> &#124; <code>null</code> - If no callback is passed in it returns a promise that resolves withtrue or false  
+**Returns**: <code>Promise</code> - Resolves with true or false. True if SHC confirmed action  
 <table>
   <thead>
     <tr>
@@ -196,7 +196,7 @@ Sets dimactuator to new state
     <td>state</td><td><code>number</code> | <code>string</code></td><td><p>New state of device. Valid values are 0-100(integer) or &#39;on&#39;/&#39;off&#39;</p>
 </td>
     </tr><tr>
-    <td>cb</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback with true or false result. True if SHC confirmed action</p>
+    <td>[cb]</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback with true or false result. True if SHC confirmed action</p>
 </td>
     </tr>  </tbody>
 </table>
@@ -206,11 +206,11 @@ Sets dimactuator to new state
 
 <a name="module_Xcomfort--Xcomfort+triggerScene"></a>
 
-#### xcomfort.triggerScene(sceneName, cb) ⇒ <code>Promise</code>
+#### xcomfort.triggerScene(sceneName, [cb]) ⇒ <code>Promise</code>
 Triggers scene
 
 **Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
-**Returns**: <code>Promise</code> - Resolves with true or false  
+**Returns**: <code>Promise</code> - Resolves with true or false. True if SHC confirmed action  
 <table>
   <thead>
     <tr>
@@ -222,7 +222,7 @@ Triggers scene
     <td>sceneName</td><td><code>string</code></td><td><p>Name of scene(same as configured on SHC). Not case sensitive</p>
 </td>
     </tr><tr>
-    <td>cb</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback with true or false result. True if SHC confirmed action</p>
+    <td>[cb]</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback with true or false result. True if SHC confirmed action</p>
 </td>
     </tr>  </tbody>
 </table>
@@ -260,7 +260,7 @@ Generates object with list of devices and scenes
 <a name="module_Xcomfort--Xcomfort+event_ready"></a>
 
 #### Event: "ready"
-Ready event gets when autosetup is complete
+Ready event gets emitted when autosetup is complete
 
 **Kind**: event emitted by <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
@@ -269,7 +269,7 @@ Ready event gets when autosetup is complete
 <a name="module_Xcomfort--Xcomfort+event_error"></a>
 
 #### Event: "error"
-General error event when internal errors occur
+General error event emitted when internal errors occur
 
 **Kind**: event emitted by <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
 
