@@ -51,6 +51,7 @@ xapi.on('ready', () => {
         * [.login()](#module_Xcomfort--Xcomfort+login)
         * [.query(method, [params], [cb])](#module_Xcomfort--Xcomfort+query) ⇒ <code>Promise</code> &#124; <code>null</code>
         * [.setDimState(deviceName, state, cb)](#module_Xcomfort--Xcomfort+setDimState) ⇒ <code>Promise</code> &#124; <code>null</code>
+        * [.triggerScene(sceneName, cb)](#module_Xcomfort--Xcomfort+triggerScene) ⇒ <code>Promise</code>
         * [.getDeviceNames()](#module_Xcomfort--Xcomfort+getDeviceNames) ⇒ <code>Array.&lt;string&gt;</code>
         * [.getSceneNames()](#module_Xcomfort--Xcomfort+getSceneNames) ⇒ <code>Array.&lt;string&gt;</code>
         * [.getNameObject()](#module_Xcomfort--Xcomfort+getNameObject) ⇒ <code>Object</code>
@@ -193,6 +194,32 @@ Sets dimactuator to new state
 </td>
     </tr><tr>
     <td>state</td><td><code>number</code> | <code>string</code></td><td><p>New state of device. Valid values are 0-100(integer) or &#39;on&#39;/&#39;off&#39;</p>
+</td>
+    </tr><tr>
+    <td>cb</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback with true or false result. True if SHC confirmed action</p>
+</td>
+    </tr>  </tbody>
+</table>
+
+
+* * *
+
+<a name="module_Xcomfort--Xcomfort+triggerScene"></a>
+
+#### xcomfort.triggerScene(sceneName, cb) ⇒ <code>Promise</code>
+Triggers scene
+
+**Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
+**Returns**: <code>Promise</code> - Resolves with true or false  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>sceneName</td><td><code>string</code></td><td><p>Name of scene(same as configured on SHC). Not case sensitive</p>
 </td>
     </tr><tr>
     <td>cb</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback with true or false result. True if SHC confirmed action</p>
