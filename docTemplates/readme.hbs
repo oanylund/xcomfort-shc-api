@@ -11,9 +11,7 @@ made by Eaton. It has no affiliation with Eaton, and is used at your own risk.
 If you have xcomfort and a smart home controller at home, this module
 can be used to create custom software for your system.
 For example you can create a webpage customized for your home that controls
-your lighting instead of that generic app that ships with the SHC
-
-The project is in a very early development stage, and the api can end up being changed dramatically.
+your lighting instead of that generic app that ships with the SHC.
 
 ### Install
 ```bash
