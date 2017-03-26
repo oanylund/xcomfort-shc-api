@@ -13,7 +13,9 @@
     "docs:readme": "jsdoc2md --template docTemplates/readme.hbs --partial docTemplates/sig-name.hbs --partial docTemplates/sig-link.hbs --no-gfm --separators  lib/*.js > README.md",
     "docs:usage": "docco --layout parallel example/index.js",
     "prebuild": "rimraf dist",
-    "build": "babel --out-dir dist --ignore *.test.js,__mocks__ lib",
+    "build": "npm run build:lib && npm run build:scripts",
+    "build:lib": "babel --out-dir dist --ignore *.test.js,__mocks__ lib",
+    "build:scripts": "babel --out-dir bin --ignore *.test.js scripts",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -26,12 +28,14 @@
   ],
   "files": [
     "dist",
+    "bin",
     "README.md"
   ],
   "author": "Ole-Andreas Nylund",
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "commander": "2.9.0",
     "request": "^2.79.0"
   },
   "devDependencies": {
@@ -71,5 +75,8 @@
       "es2015",
       "stage-2"
     ]
+  },
+  "bin": {
+    "xcomfort-exportSetup": "bin/exportSetup.js"
   }
 }
