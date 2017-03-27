@@ -13,7 +13,7 @@
     "docs:readme": "jsdoc2md --template docTemplates/readme.hbs --partial docTemplates/sig-name.hbs --partial docTemplates/sig-link.hbs --no-gfm --separators  lib/*.js > README.md",
     "docs:usage": "docco --layout parallel example/index.js",
     "prebuild": "rimraf dist",
-    "build": "babel --out-dir dist --ignore *.test.js lib",
+    "build": "babel --out-dir dist --ignore *.test.js,__mocks__ lib",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
