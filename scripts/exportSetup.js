@@ -1,26 +1,17 @@
 #!/usr/bin/env node
 
-const cli = require('commander');
 const path = require('path');
 const fs = require('fs');
 const Xapi = require('../dist/Xcomfort');
-let configPath;
-
-// 1. Parse arguments
-cli
-  .arguments('<configpath>')
-  .action( (configpath) => {
-    configPath = configpath;
-  });
-
-cli.parse(process.argv);
 
 // Exit if no argument supplied
-if(typeof configPath === 'undefined') {
-  console.error('No config path supplied');
+if(process.argv.length !== 3) {
+  console.error('No config path supplied or wrong number of arguments');
   process.exit(1);
 }
 
+// Save argument
+const configPath = process.argv[2];
 let config;
 
 const generateConfig = () => {
