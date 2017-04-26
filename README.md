@@ -49,6 +49,9 @@ xapi.on('ready', () => {
         * [.login()](#module_Xcomfort--Xcomfort+login)
         * [.query(method, [params], [cb])](#module_Xcomfort--Xcomfort+query) ⇒ <code>Promise</code>
         * [.setDimState(deviceName, state, [cb])](#module_Xcomfort--Xcomfort+setDimState) ⇒ <code>Promise</code>
+        * [.dimBrighter(deviceName, cb)](#module_Xcomfort--Xcomfort+dimBrighter) ⇒ <code>Promise</code>
+        * [.dimDarker(deviceName, cb)](#module_Xcomfort--Xcomfort+dimDarker) ⇒ <code>Promise</code>
+        * [.dimStop(deviceName, cb)](#module_Xcomfort--Xcomfort+dimStop) ⇒ <code>Promise</code>
         * [.triggerScene(sceneName, [cb])](#module_Xcomfort--Xcomfort+triggerScene) ⇒ <code>Promise</code>
         * [.getDeviceNames()](#module_Xcomfort--Xcomfort+getDeviceNames) ⇒ <code>Array.&lt;string&gt;</code>
         * [.getSceneNames()](#module_Xcomfort--Xcomfort+getSceneNames) ⇒ <code>Array.&lt;string&gt;</code>
@@ -60,6 +63,8 @@ xapi.on('ready', () => {
         * [~getZoneDevices(zoneId)](#module_Xcomfort--Xcomfort..getZoneDevices) ⇒ <code>Promise</code>
         * [~getZoneScenes(zoneId)](#module_Xcomfort--Xcomfort..getZoneScenes) ⇒ <code>Promise</code>
         * [~getQueryParams(method, params)](#module_Xcomfort--Xcomfort..getQueryParams) ⇒ <code>Object</code>
+        * [~checkIfDeviceExists(deviceName, deviceType)](#module_Xcomfort--Xcomfort..checkIfDeviceExists) ⇒ <code>Promise</code>
+        * [~invokeDCOOperation(id, type, operation, params)](#module_Xcomfort--Xcomfort..invokeDCOOperation) ⇒ <code>Promise</code>
         * [~deviceDetail](#module_Xcomfort--Xcomfort..deviceDetail) : <code>object</code>
         * [~sceneDetail](#module_Xcomfort--Xcomfort..sceneDetail) : <code>object</code>
         * [~callback](#module_Xcomfort--Xcomfort..callback) : <code>function</code>
@@ -195,6 +200,84 @@ Sets dimactuator to new state
 </td>
     </tr><tr>
     <td>[cb]</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback with true or false result. True if SHC confirmed action</p>
+</td>
+    </tr>  </tbody>
+</table>
+
+
+* * *
+
+<a name="module_Xcomfort--Xcomfort+dimBrighter"></a>
+
+#### xcomfort.dimBrighter(deviceName, cb) ⇒ <code>Promise</code>
+Tells DimActuator to start continously dimming brighter.How fast is configured on the device by the MRF software
+
+**Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
+**Returns**: <code>Promise</code> - - Resolves undefined  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>deviceName</td><td><code>String</code></td><td><p>Device name of DimActuator</p>
+</td>
+    </tr><tr>
+    <td>cb</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback</p>
+</td>
+    </tr>  </tbody>
+</table>
+
+
+* * *
+
+<a name="module_Xcomfort--Xcomfort+dimDarker"></a>
+
+#### xcomfort.dimDarker(deviceName, cb) ⇒ <code>Promise</code>
+Tells DimActuator to start continously dimming darker.How fast is configured on the device by the MRF software
+
+**Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
+**Returns**: <code>Promise</code> - - Resolves undefined  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>deviceName</td><td><code>String</code></td><td><p>Device name of DimActuator</p>
+</td>
+    </tr><tr>
+    <td>cb</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback</p>
+</td>
+    </tr>  </tbody>
+</table>
+
+
+* * *
+
+<a name="module_Xcomfort--Xcomfort+dimStop"></a>
+
+#### xcomfort.dimStop(deviceName, cb) ⇒ <code>Promise</code>
+Tells DimActuator to stop the continous dimming.
+
+**Kind**: instance method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
+**Returns**: <code>Promise</code> - - Resolves undefined  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>deviceName</td><td><code>String</code></td><td><p>Device name of DimActuator</p>
+</td>
+    </tr><tr>
+    <td>cb</td><td><code><a href="#module_Xcomfort--Xcomfort..callback">callback</a></code></td><td><p>Callback</p>
 </td>
     </tr>  </tbody>
 </table>
@@ -348,6 +431,65 @@ Configure request parameters
 </td>
     </tr><tr>
     <td>params</td><td><code>Array</code></td><td><p>Array of arguments to pass to method</p>
+</td>
+    </tr>  </tbody>
+</table>
+
+
+* * *
+
+<a name="module_Xcomfort--Xcomfort..checkIfDeviceExists"></a>
+
+#### Xcomfort~checkIfDeviceExists(deviceName, deviceType) ⇒ <code>Promise</code>
+Checks if devices with devicetype(optional) exists
+
+**Kind**: inner method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
+**Fulfil**: <code>Object</code>             - Device properties  
+**Reject**: <code>String</code>             - Error message of one of the following:- `Device name must be of type string`: deviceName was not a string- `No device with that name exists`: Device not found- `No deviceType with that name exists`: No device with correct type found  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>deviceName</td><td><code>String</code></td><td><p>SHC id of the device</p>
+</td>
+    </tr><tr>
+    <td>deviceType</td><td><code>String</code></td><td><p>SHC devicetype</p>
+</td>
+    </tr>  </tbody>
+</table>
+
+
+* * *
+
+<a name="module_Xcomfort--Xcomfort..invokeDCOOperation"></a>
+
+#### Xcomfort~invokeDCOOperation(id, type, operation, params) ⇒ <code>Promise</code>
+Invoke DCO operation on SHC
+
+**Kind**: inner method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
+**Returns**: <code>Promise</code> - - resolves undefined if no error during query  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>id</td><td><code>String</code></td><td><p>SHC id of the device</p>
+</td>
+    </tr><tr>
+    <td>type</td><td><code>String</code></td><td><p>SHC devicetype</p>
+</td>
+    </tr><tr>
+    <td>operation</td><td><code>String</code></td><td><p>Operation on deviceclass to invoke</p>
+</td>
+    </tr><tr>
+    <td>params</td><td><code>Object</code></td><td><p>key-value pairs of arguments for operation</p>
 </td>
     </tr>  </tbody>
 </table>
