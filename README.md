@@ -62,6 +62,7 @@ xapi.on('ready', () => {
         * [~initialSetup()](#module_Xcomfort--Xcomfort..initialSetup)
         * [~getZoneDevices(zoneId)](#module_Xcomfort--Xcomfort..getZoneDevices) ⇒ <code>Promise</code>
         * [~getZoneScenes(zoneId)](#module_Xcomfort--Xcomfort..getZoneScenes) ⇒ <code>Promise</code>
+        * [~importSetup(importPath)](#module_Xcomfort--Xcomfort..importSetup)
         * [~getQueryParams(method, params)](#module_Xcomfort--Xcomfort..getQueryParams) ⇒ <code>Object</code>
         * [~checkIfDeviceExists(deviceName, deviceType)](#module_Xcomfort--Xcomfort..checkIfDeviceExists) ⇒ <code>Promise</code>
         * [~invokeDCOOperation(id, type, operation, params)](#module_Xcomfort--Xcomfort..invokeDCOOperation) ⇒ <code>Promise</code>
@@ -132,6 +133,9 @@ xapi.on('ready', () => {
     </tr><tr>
     <td>[params.autoSetup]</td><td><code>boolean</code></td><td><code>true</code></td><td><p>If true, class will login and setup
 device and scene map automatically</p>
+</td>
+    </tr><tr>
+    <td>[params.importSetupPath]</td><td><code>object</code></td><td></td><td><p>Path to json setup file with device and scene maps</p>
 </td>
     </tr>  </tbody>
 </table>
@@ -405,6 +409,29 @@ Gets scenes in zone from SHC and adds them to sceneMap with nameof scene as key
   <tbody>
 <tr>
     <td>zoneId</td><td><code>string</code></td><td><p>name of zone to get devices in</p>
+</td>
+    </tr>  </tbody>
+</table>
+
+
+* * *
+
+<a name="module_Xcomfort--Xcomfort..importSetup"></a>
+
+#### Xcomfort~importSetup(importPath)
+Imports existing setup file and creates new device and scene maps
+
+**Kind**: inner method of <code>[Xcomfort](#exp_module_Xcomfort--Xcomfort)</code>  
+**Emits**: <code>[ready](#module_Xcomfort--Xcomfort+event_ready)</code>, <code>[error](#module_Xcomfort--Xcomfort+event_error)</code>  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+    <td>importPath</td><td><code>string</code></td><td><p>Relative path to file</p>
 </td>
     </tr>  </tbody>
 </table>
