@@ -9,6 +9,9 @@ made by Eaton. It has no affiliation with Eaton, and is used at your own risk.
 The module can be used to interface Xcomfort to other systems,
 create custom logic, or just for fun!
 
+## Notice!
+This library is not under active development due to the developer not having access to a Xcomfort system anymore. If someone with access to the hardware would like to drive this library forward that would be awesome!
+
 ### Prerequisite
 You need to own a smart home controller(CHCA-00/01)
 and it needs to be available on your network.
